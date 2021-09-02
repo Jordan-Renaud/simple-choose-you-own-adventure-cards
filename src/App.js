@@ -1,6 +1,6 @@
 import "./App.css";
 import TinderCard from "react-tinder-card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const storyMap = [
   {
@@ -24,6 +24,8 @@ const storyMap = [
 ];
 
 function App() {
+  const [storyIndex, setStoryIndex] = useState(0);
+
   const onSwipe = (direction) => {
     console.log("You swiped: " + direction);
   };
@@ -39,7 +41,7 @@ function App() {
         onCardLeftScreen={() => onCardLeftScreen("fooBar")}
         preventSwipe={["right", "left"]}
       >
-        Hello, World!
+        <p className="card-text">{storyMap[storyIndex].text}</p>
       </TinderCard>
     </div>
   );
